@@ -40,7 +40,7 @@ Classes and methods definition.
 
 - MAIN.JS
 
-  - -main
+  - main
 
       buildDOM() - creates HTML content;
       main() - load page content
@@ -49,7 +49,7 @@ Classes and methods definition.
       destroySplash() - removes splash screen;
       startGame() - starts a new game, removing splash or game over screen;
      
-  - -start game
+  - start game
 
       new Game() - creates a new game based on the Game constructor;
       gameOnOver() - ;
@@ -72,9 +72,13 @@ Classes and methods definition.
 - GAME.JS
 
     Game constructor - properties: gameIsOver = false;
+    
     start() - build the DOM (Game Main), creating all the elements on the page - Score, lives, etc;
+    
     startTimer() - start the countdown (60 secs);
+    
     new Chicken - creates a chicken based on the chicken constructor;
+    
     handleKeys() - set the chicken direction up, down, left and right;
     AddEventListener - calls handleKeys, moving the chicken to up, down, left or right, depending on which key was pressed;
     startLoop()- called by startGame(), creates a cars array, updates the position of the chicken and the car;
