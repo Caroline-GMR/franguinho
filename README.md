@@ -7,13 +7,13 @@ Franguinho
 ## Description
 The player control a chicken who can be made to run across a lane highway filled with traffic in an effort to 'get to the other side'. 
 There is just one lane, with cars of different sizes and travelling at different speeds.
-- START
+- START: 
 The game starts with three lives and a countdown that starts with sixty seconds.
 Every time the chicken gets across a point is earned. 
 If hit by a car, a point and a live are lost and the chicken is pushed back to the bottom of the screen.
-- GAME OVER
+- GAME OVER: 
 When the countdown finish or there are no longer lifes, the game is over.
-- CONTROL
+- CONTROL: 
 The chicken is allowed to move up, down, left and right. 
 
 
@@ -72,13 +72,9 @@ Classes and methods definition.
 - GAME.JS
 
     Game constructor - properties: gameIsOver = false;
-    
     start() - build the DOM (Game Main), creating all the elements on the page - Score, lives, etc;
-    
     startTimer() - start the countdown (60 secs);
-    
     new Chicken - creates a chicken based on the chicken constructor;
-    
     handleKeys() - set the chicken direction up, down, left and right;
     AddEventListener - calls handleKeys, moving the chicken to up, down, left or right, depending on which key was pressed;
     startLoop()- called by startGame(), creates a cars array, updates the position of the chicken and the car;
