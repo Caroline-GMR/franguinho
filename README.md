@@ -104,7 +104,7 @@ Classes and methods definition.
     isInScreen() - Checks if the car is inside of the page;
   
 
-- -CHICKEN.JS
+- CHICKEN.JS
 
     Chicken constructor - properties: canvas, lives(3), size, x, y, direction, speed;
     
