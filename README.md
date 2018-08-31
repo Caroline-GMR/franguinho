@@ -71,6 +71,7 @@ Classes and methods definition.
 
 - GAME.JS
 
+
     Game constructor - properties: gameIsOver = false;
     
     start() - build the DOM (Game Main), creating all the elements on the page - Score, lives, etc;
@@ -93,6 +94,7 @@ Classes and methods definition.
 
 
 - CARS.JS
+
     Cars constructor - properties: canvas, size, x = where the car appears, y = represents the lane, speed;
     
     update() - updates the x position, given a speed;
@@ -103,6 +105,7 @@ Classes and methods definition.
   
 
 - -CHICKEN.JS
+
     Chicken constructor - properties: canvas, lives(3), size, x, y, direction, speed;
     
     setDirection() - sets the direction of the chicken (from bottom to top);
