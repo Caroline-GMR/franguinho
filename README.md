@@ -56,7 +56,7 @@ Classes and methods definition.
       destroyGame() - removes splash or game over screen;  
       
 
-  - -game over
+  - game over
 
       gameOver() - finishes the game;
       buildGameOver() - creates a win screen with total score and RESTART button;
@@ -64,7 +64,7 @@ Classes and methods definition.
       destroyGameOver(); - removes game over screen;
 
 
-  - -win game
+  - win game
 
       buildWin() - creates a win screen with total score and RESTART button;
       addEventListener - starts the game if RESTART button is clicked;
