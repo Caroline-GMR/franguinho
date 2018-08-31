@@ -7,13 +7,13 @@ Franguinho
 ## Description
 The player control a chicken who can be made to run across a lane highway filled with traffic in an effort to 'get to the other side'. 
 There is just one lane, with cars of different sizes and travelling at different speeds.
-- --START--
+- START
 The game starts with three lives and a countdown that starts with sixty seconds.
 Every time the chicken gets across a point is earned. 
 If hit by a car, a point and a live are lost and the chicken is pushed back to the bottom of the screen.
-- --GAME OVER--
+- GAME OVER
 When the countdown finish or there are no longer lifes, the game is over.
-- --CONTROL--
+- CONTROL
 The chicken is allowed to move up, down, left and right. 
 
 
@@ -38,7 +38,7 @@ The chicken is allowed to move up, down, left and right.
 ## Data structure
 Classes and methods definition.
 
-- -MAIN.JS
+- MAIN.JS
 
   - -main
 
@@ -69,7 +69,7 @@ Classes and methods definition.
       buildWin() - creates a win screen with total score and RESTART button;
       addEventListener - starts the game if RESTART button is clicked;
 
-- -GAME.JS
+- GAME.JS
 
     Game constructor - properties: gameIsOver = false;
     start() - build the DOM (Game Main), creating all the elements on the page - Score, lives, etc;
@@ -83,7 +83,7 @@ Classes and methods definition.
     addAPoint - adds 1 point to the Score if the chicken crosses the road.
 
 
-- -CARS.JS
+- CARS.JS
     Cars constructor - properties: canvas, size, x = where the car appears, y = represents the lane, speed;
     update() - updates the x position, given a speed;
     draw() - prints the car with a canvas element;
