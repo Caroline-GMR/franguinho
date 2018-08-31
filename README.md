@@ -72,31 +72,49 @@ Classes and methods definition.
 - GAME.JS
 
     Game constructor - properties: gameIsOver = false;
+    
     start() - build the DOM (Game Main), creating all the elements on the page - Score, lives, etc;
+    
     startTimer() - start the countdown (60 secs);
+    
     new Chicken - creates a chicken based on the chicken constructor;
+    
     handleKeys() - set the chicken direction up, down, left and right;
+    
     AddEventListener - calls handleKeys, moving the chicken to up, down, left or right, depending on which key was pressed;
+    
     startLoop()- called by startGame(), creates a cars array, updates the position of the chicken and the car;
+    
     ifCollided() - checks if the chicken and the car collided, if yes, 1 live is lost;
+    
     triggerTimeOut() - if the countdown finishes, calls gameOver();
+    
     addAPoint - adds 1 point to the Score if the chicken crosses the road.
 
 
 - CARS.JS
     Cars constructor - properties: canvas, size, x = where the car appears, y = represents the lane, speed;
+    
     update() - updates the x position, given a speed;
+    
     draw() - prints the car with a canvas element;
+    
     isInScreen() - Checks if the car is inside of the page;
   
 
 - -CHICKEN.JS
     Chicken constructor - properties: canvas, lives(3), size, x, y, direction, speed;
+    
     setDirection() - sets the direction of the chicken (from bottom to top);
+    
     update() - updates y or x position given the selected key;
+    
     draw() - prints the chicken with a canvas element;
+    
     collidesWithCar() - Checks if the chicken collides with a car;
+    
     collided() - If a car hits the chicken, 1 live is lost;
+    
 
 ## States y States Transitions
 Definition of the different states and their transition (transition functions)
