@@ -40,7 +40,7 @@ Classes and methods definition.
 
 - -MAIN.JS
 
-  - -(main)
+  - -main
 
       buildDOM() - creates HTML content;
       main() - load page content
@@ -49,14 +49,14 @@ Classes and methods definition.
       destroySplash() - removes splash screen;
       startGame() - starts a new game, removing splash or game over screen;
      
-  - -(start game)
+  - -start game
 
       new Game() - creates a new game based on the Game constructor;
       gameOnOver() - ;
       destroyGame() - removes splash or game over screen;  
       
 
-  - -(game over)
+  - -game over
 
       gameOver() - finishes the game;
       buildGameOver() - creates a win screen with total score and RESTART button;
@@ -64,7 +64,7 @@ Classes and methods definition.
       destroyGameOver(); - removes game over screen;
 
 
-  - -(win game)
+  - -win game
 
       buildWin() - creates a win screen with total score and RESTART button;
       addEventListener - starts the game if RESTART button is clicked;
