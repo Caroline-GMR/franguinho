@@ -12,7 +12,7 @@ function Cars(canvas, y, speed) {
 
 }
 
-Cars.prototype.update = function(){
+Cars.prototype.update = function(move){
   var self = this;
 
   self.x = self.x - self.speed;

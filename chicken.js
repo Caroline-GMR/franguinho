@@ -17,23 +17,26 @@ function Chicken(canvas, lives){
 Chicken.prototype.setDirection = function (direction) {
   var self = this;
 
+
   self.direction = direction;
 };
+
 
 Chicken.prototype.update = function(move){
   var self = this;
 
+  //O que está fazendo ficar diagonal - fazer um filtro para se for Y, self.y = ... se X self.x = ...
   self.y = self.y + self.direction * self.speed;
+  //self.x = self.x + self.direction * self.speed;
 
-  if (self.y < 0) {
+  if (self.y < 0 || self.x < 0) {
 
     self.direction = 1;
   }
 
-  if (self.y > self.canvas.height) {
+  if (self.y > self.canvas.height || self.x > self.canvas.width) {
     self.direction = -1;
   }
-
 };
 
 
