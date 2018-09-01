@@ -1,13 +1,13 @@
 'use strict';
 
-function Cars(canvas, x, y, speed) {
+function Cars(canvas, y, speed) {
   var self = this;
 
   self.canvas = canvas;
   self.size = 20;
   self.x = canvas.width + self.size;
   self.y = y;
-  self.speed = speed;
+  self.speed = ((Math.random() * 2) + 1);
   self.ctx = self.canvas.getContext('2d');
 
 }
@@ -16,7 +16,6 @@ Cars.prototype.update = function(){
   var self = this;
 
   self.x = self.x - self.speed;
-  self.y = self.y - self.speed;
 }
 
 Cars.prototype.draw = function(){

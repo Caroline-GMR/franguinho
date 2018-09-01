@@ -50,24 +50,27 @@ Game.prototype.start = function () {
   self.canvasElement.setAttribute('height', self.height);
 
   self.chicken = new Chicken(self.canvasElement, 5);
+  self.livesElement.innerText = self.chicken.lives;
   self.startTimer();
 
   self.handleKeyDown = function(event){
     switch (event.key){
       case 'ArrowUp':
-      self.chicken.setDirectionY(-1);
+      self.chicken.setDirection(-1);
       case 'ArrowDown':
-      self.chicken.setDirectionY(1);
-      case 'ArrowLeft':
-      self.chicken.setDirectionX(-1);
+      self.chicken.setDirection(1);
+   /*    case 'ArrowLeft':
+      self.chicken.setDirection(-1);
       case 'ArrowRight':
-      self.chicken.setDirectionX(1);
+      self.chicken.setDirection(1); */
     }
   }
 
   document.body.addEventListener('keydown', self.handleKeyDown);
 
   var height = self.canvasElement.height;
+  var width = self.canvasElement.width;
+
 
   self.cars = [];
 
@@ -78,7 +81,7 @@ Game.prototype.start = function () {
 Game.prototype.startTimer = function () {
   var self = this;
 
-  self.timeLeft = 5;
+  self.timeLeft = 60;
   self.timeLeftElement.innerText = self.timeLeft;
   self.intervalId = window.setInterval(function () {
     self.timeLeft--;
@@ -97,16 +100,19 @@ Game.prototype.timeout = function () {
   self.gameOver();
 };
 
+
+
 Game.prototype.startLoop = function () {
   var self = this;
 
   var ctx = self.canvasElement.getContext('2d');
   
   function loop(){
+  
 
     if(Math.random() > 0.99){
       var y = self.canvasElement.height * Math.random();
-      self.cars.push(new Cars(self.canvasElement, y, 5));
+      self.cars.push(new Cars(self.canvasElement, y, self.speed));
     }
 
     self.chicken.update();
@@ -141,6 +147,7 @@ Game.prototype.CheckIfCollides = function () {
   self.cars.forEach(function(item){
     if(self.chicken.collidesWithCar(item)) {
       self.chicken.collided();
+      self.livesElement.innerText = self.chicken.lives;
       if(!self.chicken.lives) {
         self.gameOver();
       }
