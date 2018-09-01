@@ -53,10 +53,15 @@ Game.prototype.start = function () {
   self.startTimer();
 
   self.handleKeyDown = function(event){
-    if (event.key === 'ArrowUp') {
-      self.chicken.setDirection(-1);
-    } else if (event.key === 'ArrowDown') {
-      self.chicken.setDirection(1);
+    switch (event.key){
+      case 'ArrowUp':
+      self.chicken.setDirectionY(-1);
+      case 'ArrowDown':
+      self.chicken.setDirectionY(1);
+      case 'ArrowLeft':
+      self.chicken.setDirectionX(-1);
+      case 'ArrowRight':
+      self.chicken.setDirectionX(1);
     }
   }
 
