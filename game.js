@@ -106,14 +106,15 @@ Game.prototype.startLoop = function () {
   var self = this;
 
   var ctx = self.canvasElement.getContext('2d');
+
+  var lanes = [10, 20, 30, 40, 50, 60, 70, 80, 90];
   
   function loop(){
-  
-
-    if(Math.random() > 0.99){
-      var y = self.canvasElement.height * Math.random();
-      self.cars.push(new Cars(self.canvasElement, y, self.speed));
-    }
+    
+    var random = Math.floor(Math.random() * lanes.length);
+    var y = lanes[random];
+    self.cars.push(new Cars(self.canvasElement, y, self.speed));
+    
 
     self.chicken.update();
 

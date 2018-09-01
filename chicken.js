@@ -6,10 +6,10 @@ function Chicken(canvas, lives){
   self.canvas = canvas;
   self.lives = lives;
   self.size = 20;
-  self.x = 0 + self.size / 2;
-  self.y = 0 + canvas.height / 2;
+  self.x = canvas.width / 2;
+  self.y = canvas.height - self.size;
   self.direction = 0;
-  self.speed = 5;
+  self.speed = 3;
   self.ctx = self.canvas.getContext('2d');
 };
 
