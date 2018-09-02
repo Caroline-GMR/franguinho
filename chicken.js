@@ -67,6 +67,7 @@ Chicken.prototype.collidesWithCar = function (car) {
 Chicken.prototype.collided = function () {
   var self = this;
   self.lives--;
+ 
 }
 
 Chicken.prototype.isCrossed = function () {
@@ -75,4 +76,12 @@ Chicken.prototype.isCrossed = function () {
     return true;
   }
   return false;
+}
+
+Chicken.prototype.removeChicken = function () {
+  var self = this;
+
+  self.x -= 50;
+  self.y = self.canvas.height - self.size;
+
 }

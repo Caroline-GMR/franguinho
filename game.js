@@ -178,7 +178,9 @@ Game.prototype.CheckIfCollides = function () {
   self.cars.forEach(function(item){
     if(self.chicken.collidesWithCar(item)) {
       self.chicken.collided();
+      self.chicken.removeChicken();
       self.livesElement.innerText = self.chicken.lives;
+      console.log("Collision");
       if(self.chicken.lives === 0) {
         self.gameOver();
       }
