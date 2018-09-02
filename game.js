@@ -4,8 +4,10 @@ function Game() {
   var self = this;
 
   self.gameIsOver = false;
+  self.gameIsWon = false;
   self.timeLeft = null;
-  self.round = 0;
+  self.round = 1;
+  //self.sidewalk = 25;
 }
 
 Game.prototype.start = function () {
@@ -40,7 +42,6 @@ Game.prototype.start = function () {
   self.roundElement = self.gameMain.querySelector('.round .value');
   self.timeLeftElement = self.gameMain.querySelector('.timer .value');
 
-
   document.body.appendChild(self.gameMain);
 
   self.width = self.canvasParentElement.offsetWidth;
@@ -55,13 +56,41 @@ Game.prototype.start = function () {
 
   self.handleKeyDown = function(event){
     if (event.key === 'ArrowUp'){
+      self.chicken.keyState[0] = true;
       self.chicken.setDirection(-1);
-    } else if(event.key === 'ArrowDown'){
+    }
+    if(event.key === 'ArrowDown'){
+      self.chicken.keyState[2] = true;
       self.chicken.setDirection(1);
     }
-  }
+    if(event.key === 'ArrowLeft'){
+      self.chicken.keyState[3] = true;
+      self.chicken.setDirection(-1);
+    }
+    if(event.key === 'ArrowRight'){
+      self.chicken.keyState[1] = true;
+      self.chicken.setDirection(1);
+    }
+}
 
   document.body.addEventListener('keydown', self.handleKeyDown);
+
+  self.handleKeyUp = function(event){
+    if (event.key === 'ArrowUp'){
+      self.chicken.keyState[0] = false;
+    }
+    if(event.key === 'ArrowRight'){
+      self.chicken.keyState[1] = false;
+    }
+    if(event.key === 'ArrowDown'){
+      self.chicken.keyState[2] = false;
+    }
+    if(event.key === 'ArrowLeft'){
+      self.chicken.keyState[3] = false;
+    }
+}
+
+  document.body.addEventListener('keyup', self.handleKeyUp);
 
   var height = self.canvasElement.height;
   var width = self.canvasElement.width;
@@ -91,17 +120,15 @@ Game.prototype.startTimer = function () {
 
 Game.prototype.timeout = function () {
   var self = this;
-
-  self.gameOver();
+  if (!self.isGameEnded()){
+    self.gameOver();
+  }
 };
-
-
 
 Game.prototype.startLoop = function () {
   var self = this;
 
   var ctx = self.canvasElement.getContext('2d');
-
   
   function loop(){
     
@@ -133,7 +160,11 @@ Game.prototype.startLoop = function () {
       item.draw();
     });
 
-    if (!self.gameIsOver) {
+    if (self.chicken.isCrossed()) {
+      self.winGame();
+    }
+
+    if (!self.isGameEnded()) {
       window.requestAnimationFrame(loop);
     }
   }
@@ -148,17 +179,23 @@ Game.prototype.CheckIfCollides = function () {
     if(self.chicken.collidesWithCar(item)) {
       self.chicken.collided();
       self.livesElement.innerText = self.chicken.lives;
-      if(!self.chicken.lives) {
+      if(self.chicken.lives === 0) {
         self.gameOver();
       }
     }
   });
 }
 
+Game.prototype.isGameEnded = function () {
+  var self = this;
+
+  return ((self.gameIsOver) || (self.gameIsWon));
+};
+
 Game.prototype.gameOver = function (callback) {
   var self = this;
-  self.gameIsOver = true;
 
+  self.gameIsOver = true;
   self.onGameOverCallback();
 };
 
@@ -173,3 +210,19 @@ Game.prototype.destroy = function () {
   
   self.gameMain.remove();
 };
+
+Game.prototype.winGame = function () {
+  var self = this;
+
+  self.gameIsWon = true;
+  self.onGameWonCallback();
+};
+
+Game.prototype.onWon = function (callback) {
+  var self = this;
+
+  self.onGameWonCallback = callback;
+};
+
+
+

@@ -31,7 +31,6 @@ function main() {
     var button = splashMain.querySelector('button');
     button.addEventListener('click', startGame);
 
-    //startGame();
   }
 
   function destroySplash() {
@@ -50,6 +49,9 @@ function main() {
     game.start();
     game.onOver(function () {
       gameOver(game.round);
+    });
+    game.onWon(function(){
+      gameWon();
     });
   }
 
@@ -92,12 +94,12 @@ function main() {
 
   // -- game won
 
-  function gameWon(round){
+  function gameWon(){
     destroyGame();
-    buildGameWon(round);
+    buildGameWon();
   }
 
-  function buildGameWon(round){
+  function buildGameWon(){
     gameWonMain = buildDom(`
       <main class="won">
         <h1>You win!</h1>
@@ -111,8 +113,8 @@ function main() {
     var button = gameWonMain.querySelector('button');
     button.addEventListener('click', startGame);
 
-    var span = gameWonMain.querySelector('span');
-    span.innerText = round;
+/*     var span = gameWonMain.querySelector('span');
+    span.innerText = round; */
   }
 
   function destroyGameWon(){
