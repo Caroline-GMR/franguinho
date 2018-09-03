@@ -40,53 +40,49 @@ Classes and methods definition.
 
 - MAIN.JS
 
-  buildDOM() - creates HTML content;
-  main() - load page content
-  buildSplash() - creates splash screen;
-  addEventListener - starts the game if START button is clicked;
-  destroySplash() - removes splash screen;
-  startGame() - starts a new game, removing splash or game over screen;
+  - buildDOM() - creates HTML content;
+  - main() - load page content
+  - buildSplash() - creates splash screen;
+  - destroySplash() - removes splash screen;
+  - startGame() - starts a new game, removing splash or game over screen;
      
-  new Game() - creates a new game based on the Game constructor;
-  gameOnOver() - ;
-  destroyGame() - removes splash or game over screen;  
+  - new Game() - creates a new game based on the Game constructor;
+  - gameOnOver() - ;
+  - destroyGame() - removes splash or game over screen;  
 
-  gameOver() - finishes the game;
-  buildGameOver() - creates a win screen with total score and RESTART button;
-  addEventListener - starts the game if RESTART button is clicked;
-  destroyGameOver(); - removes game over screen;
+  - gameOver() - finishes the game;
+  - buildGameOver() - creates a win screen with total score and RESTART button;
+  - destroyGameOver(); - removes game over screen;
 
-  buildWin() - creates a win screen with total score and RESTART button;
-  addEventListener - starts the game if RESTART button is clicked;
+  - buildWin() - creates a win screen with total score and RESTART button;
 
 - GAME.JS
 
-  Game constructor - properties: gameIsOver = false;
-  start() - build the DOM (Game Main), creating all the elements on the page - Score, lives, etc;
-  startTimer() - start the countdown (60 secs);
-  new Chicken - creates a chicken based on the chicken constructor;
-  handleKeys() - set the chicken direction up, down, left and right;
-  AddEventListener - calls handleKeys, moving the chicken to up, down, left or right, depending on which key was pressed;
-  startLoop()- called by startGame(), creates a cars array, updates the position of the chicken and the car;
-  ifCollided() - checks if the chicken and the car collided, if yes, 1 live is lost;
-  triggerTimeOut() - if the countdown finishes, calls gameOver();
-  addAPoint - adds 1 point to the Score if the chicken crosses the road.
+  - Game constructor - properties: gameIsOver = false;
+  - start() - build the DOM (Game Main), creating all the elements on the page - Score, lives, etc;
+  - startTimer() - start the countdown (60 secs);
+  - new Chicken - creates a chicken based on the chicken constructor;
+  - handleKeys() - set the chicken direction up, down, left and right;
+  - startLoop()- called by startGame(), creates a cars array, updates the position of the chicken and the car;
+  - ifCollided() - checks if the chicken and the car collided, if yes, 1 live is lost;
+  - triggerTimeOut() - if the countdown finishes, calls gameOver();
+  - addAPoint() - adds 1 point to the Score if the chicken crosses the road.
 
 - CARS.JS
 
-  Cars constructor - properties: canvas, size, x = where the car appears, y = represents the lane,speed;
-  update() - updates the x position, given a speed;
-  draw() - prints the car with a canvas element;
-  isInScreen() - Checks if the car is inside of the page;
+  - Cars constructor - properties: canvas, size, x = where the car appears, y = represents the lane, speed;
+  - update() - updates the x position, given a speed;
+  - draw() - prints the car with a canvas element;
+  - isInScreen() - Checks if the car is inside of the page;
 
 - CHICKEN.JS
 
-  Chicken constructor - properties: canvas, lives(3), size, x, y, direction, speed;
-  setDirection() - sets the direction of the chicken (from bottom to top);
-  update() - updates y or x position given the selected key;
-  draw() - prints the chicken with a canvas element;
-  collidesWithCar() - Checks if the chicken collides with a car;
-  collided() - If a car hits the chicken, 1 live is lost;
+  - Chicken constructor - properties: canvas, lives(3), size, x, y, direction, speed;
+  - setDirection() - sets the direction of the chicken (from bottom to top);
+  - update() - updates y or x position given the selected key;
+  - draw() - prints the chicken with a canvas element;
+  - collidesWithCar() - Checks if the chicken collides with a car;
+  - collided() - If a car hits the chicken, 1 live is lost;
   
 
 ## States y States Transitions
@@ -96,27 +92,20 @@ Definition of the different states and their transition (transition functions)
   main();
 
 - splashScreen
-  buildSplash() 
-  AddEventListener(start button);
+  - When you click the start button you go to the game screen 
 
 - gameScreen
-  Game.buildDOM();
+  - If the chicken reach the other side you win and you go to the gameover screen (winning condition)
+  - If the chicke lose the 3 lives or the time runs out you got to the gameover screen (losing condition)
 
 - gameoverScreen
-  buildGameOver();
-  AddEventListener(restart button);
-
-- winScreen
-  buildWinScreen();
-  AddEventListener(restart button);
-
+  - When you click the start button you go to the game screen 
 
 ## Task
 Task definition in order of priority
 - Create splash screen;
 - Create game screen;
 - Create game over screen;
-- Create win screen;
 - Create timer;
 - Create a score;
 - Create chicken element;

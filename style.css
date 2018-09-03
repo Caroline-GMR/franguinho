@@ -98,4 +98,5 @@ html, body {
 
 .game .canvas {
   flex: 1;
+  background-color: darkgray;
 }
