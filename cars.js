@@ -7,7 +7,7 @@ function Cars(canvas, y, speed) {
   self.size = 20;
   self.x = canvas.width + self.size;
   self.y = y;
-  self.speed = ((Math.random() * 2) + 1);
+  self.speed = speed;
   self.ctx = self.canvas.getContext('2d');
 
 }
@@ -23,12 +23,17 @@ Cars.prototype.draw = function(){
 
   self.ctx.fillStyle = 'red';
   self.ctx.fillRect(self.x - self.size / 2, self.y - self.size / 2, self.size, self.size);
-
 }
-
 
 Cars.prototype.isInScreen = function() {
   var self = this;
   return self.x + self.size / 2 > 0;
-
 }
+/* 
+Cars.prototype.removeCar = function() {
+  var self = this;
+
+  console.log('removeCar was called');
+  ctx.clearRect(0, 0, self.width, self.height);
+}
+ */

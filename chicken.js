@@ -24,7 +24,7 @@ Chicken.prototype.setDirection = function (direction) {
 
 Chicken.prototype.update = function(){
   var self = this;
-
+  
   if(self.keyState[0] === true || self.keyState[2] === true){
   self.y = self.y + self.direction;
   }
@@ -72,7 +72,7 @@ Chicken.prototype.collided = function () {
 
 Chicken.prototype.isCrossed = function () {
   var self = this;
-  if(self.y === self.size){
+  if(self.y === (25)){
     return true;
   }
   return false;
@@ -81,7 +81,6 @@ Chicken.prototype.isCrossed = function () {
 Chicken.prototype.removeChicken = function () {
   var self = this;
 
-  self.x -= 50;
   self.y = self.canvas.height - self.size;
 
 }

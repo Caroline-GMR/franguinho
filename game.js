@@ -6,8 +6,9 @@ function Game() {
   self.gameIsOver = false;
   self.gameIsWon = false;
   self.timeLeft = null;
-  self.round = 1;
-  //self.sidewalk = 25;
+  //self.round = round;
+  self.lanes = [75, 125, 175, 225, 275, 325, 375];
+
 }
 
 Game.prototype.start = function () {
@@ -45,7 +46,9 @@ Game.prototype.start = function () {
   document.body.appendChild(self.gameMain);
 
   self.width = self.canvasParentElement.offsetWidth;
-  self.height = self.canvasParentElement.offsetHeight;
+  //self.height = self.canvasParentElement.offsetHeight;
+  self.height = 450;
+
 
   self.canvasElement.setAttribute('width', self.width);
   self.canvasElement.setAttribute('height', self.height);
@@ -92,10 +95,6 @@ Game.prototype.start = function () {
 
   document.body.addEventListener('keyup', self.handleKeyUp);
 
-  var height = self.canvasElement.height;
-  var width = self.canvasElement.width;
-
-
   self.cars = [];
 
   self.startLoop();
@@ -131,16 +130,16 @@ Game.prototype.startLoop = function () {
   var ctx = self.canvasElement.getContext('2d');
   
   function loop(){
-    
-    /* var lanes = [25, 50, 75, 100];
-    var random = Math.floor(Math.random() * lanes.length);
-    var y = lanes[random];
-    self.cars.push(new Cars(self.canvasElement, y, self.speed));
-     */
-    if(Math.random() > 0.99){
-      var y = self.canvasElement.height * Math.random();
-      self.cars.push(new Cars(self.canvasElement, y, self.speed));
-    }
+
+    /* var height = self.canvasElement.height;
+    var width = self.canvasElement.width; */
+
+    var random = Math.floor(Math.random() * self.lanes.length);
+    var y = self.lanes[random];
+    var speed = (900 / y); // @todo make setSpeed function
+    if(Math.random() > 0.90){
+    self.cars.push(new Cars(self.canvasElement, y, speed));
+    } 
 
     self.chicken.update();
 
@@ -153,8 +152,13 @@ Game.prototype.startLoop = function () {
     })
  
     self.CheckIfCollides();
-
+    
     ctx.clearRect(0, 0, self.width, self.height);
+    ctx.fillStyle = 'green';
+    ctx.fillRect(0, 0, self.width, 40);
+    ctx.fillRect(0, self.height-40, self.width, 50);
+    ctx.fillRect(0, self.height-40, self.width, 50);
+    
     self.chicken.draw();
     self.cars.forEach(function(item){
       item.draw();
@@ -180,7 +184,6 @@ Game.prototype.CheckIfCollides = function () {
       self.chicken.collided();
       self.chicken.removeChicken();
       self.livesElement.innerText = self.chicken.lives;
-      console.log("Collision");
       if(self.chicken.lives === 0) {
         self.gameOver();
       }
@@ -225,6 +228,5 @@ Game.prototype.onWon = function (callback) {
 
   self.onGameWonCallback = callback;
 };
-
 
 

@@ -113,8 +113,8 @@ function main() {
     var button = gameWonMain.querySelector('button');
     button.addEventListener('click', startGame);
 
-/*     var span = gameWonMain.querySelector('span');
-    span.innerText = round; */
+    var span = gameWonMain.querySelector('span');
+    span.innerText = self.game.round;
   }
 
   function destroyGameWon(){
