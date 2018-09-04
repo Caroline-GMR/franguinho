@@ -121,6 +121,7 @@ Task definition in order of priority
 - Create score update function;
 
 
+
 ## Links
 
 
@@ -137,3 +138,10 @@ URls for the project repo and deploy
 ### Slides
 URls for the project presentation (slides)
 [Link Slides.com](http://slides.com)
+
+
+## Development
+
+This project uses SCSS. Use the following line to compile to CSS while you are coding:
+
+```node-sass --output-style compressed --source-map true --watch style.scss style.css```
