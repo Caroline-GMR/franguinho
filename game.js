@@ -56,7 +56,7 @@ Game.prototype.start = function () {
   self.chicken = new Chicken(self.canvasElement, 5);
   self.livesElement.innerText = self.chicken.lives;
   self.scoreElement.innerText = self.score;
-
+  console.log(self.height);
   self.startTimer();
 
   self.handleKeyDown = function(event){
@@ -106,7 +106,7 @@ Game.prototype.start = function () {
 Game.prototype.startTimer = function () {
   var self = this;
 
-  self.timeLeft = 10;
+  self.timeLeft = 30;
   self.timeLeftElement.innerText = self.timeLeft;
   self.intervalId = window.setInterval(function () {
     self.timeLeft--;
@@ -114,7 +114,11 @@ Game.prototype.startTimer = function () {
 
     if (self.timeLeft === 0) {
       clearInterval(self.intervalId);
-      self.timeout();
+      if (self.chicken.lives === 5 && self.score > 0){
+        self.winGame();
+      } else {
+        self.timeout();
+      }
     }
   }, 1000);
 };
@@ -170,6 +174,7 @@ Game.prototype.startLoop = function () {
       self.addPoint();
     }
 
+    
     if (!self.isGameEnded()) {
       window.requestAnimationFrame(loop);
     }
