@@ -45,8 +45,9 @@ Game.prototype.start = function () {
 
   document.body.appendChild(self.gameMain);
 
-  self.width = self.canvasParentElement.offsetWidth;
+  //self.width = self.canvasParentElement.offsetWidth;
   //self.height = self.canvasParentElement.offsetHeight;
+  self.width = 1200;
   self.height = 450;
 
 
@@ -56,7 +57,6 @@ Game.prototype.start = function () {
   self.chicken = new Chicken(self.canvasElement, 5);
   self.livesElement.innerText = self.chicken.lives;
   self.scoreElement.innerText = self.score;
-  console.log(self.height);
   self.startTimer();
 
   self.handleKeyDown = function(event){
@@ -106,7 +106,7 @@ Game.prototype.start = function () {
 Game.prototype.startTimer = function () {
   var self = this;
 
-  self.timeLeft = 30;
+  self.timeLeft = 5;
   self.timeLeftElement.innerText = self.timeLeft;
   self.intervalId = window.setInterval(function () {
     self.timeLeft--;
@@ -142,7 +142,7 @@ Game.prototype.startLoop = function () {
 
     var random = Math.floor(Math.random() * self.lanes.length);
     var y = self.lanes[random];
-    var speed = (100 / y); // @todo make setSpeed function
+    var speed = (700 / y); // @todo make setSpeed function
     if(Math.random() > 0.90){
     self.cars.push(new Cars(self.canvasElement, y, speed));
     } 
@@ -162,7 +162,6 @@ Game.prototype.startLoop = function () {
     ctx.clearRect(0, 0, self.width, self.height);
     ctx.fillStyle = 'green';
     ctx.fillRect(0, 0, self.width, 40);
-    ctx.fillRect(0, self.height-40, self.width, 50);
     ctx.fillRect(0, self.height-40, self.width, 50);
     
     self.chicken.draw();
