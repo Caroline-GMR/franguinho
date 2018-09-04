@@ -54,6 +54,8 @@ Game.prototype.start = function () {
   self.canvasElement.setAttribute('width', self.width);
   self.canvasElement.setAttribute('height', self.height);
 
+  self.background = new Background(self.canvasElement, self.lanes.length, self.width, self.height);
+
   self.chicken = new Chicken(self.canvasElement, 5);
   self.livesElement.innerText = self.chicken.lives;
   self.scoreElement.innerText = self.score;
@@ -106,7 +108,7 @@ Game.prototype.start = function () {
 Game.prototype.startTimer = function () {
   var self = this;
 
-  self.timeLeft = 5;
+  self.timeLeft = 60;
   self.timeLeftElement.innerText = self.timeLeft;
   self.intervalId = window.setInterval(function () {
     self.timeLeft--;
@@ -134,7 +136,7 @@ Game.prototype.startLoop = function () {
   var self = this;
 
   var ctx = self.canvasElement.getContext('2d');
-  
+
   function loop(){
 
     /* var height = self.canvasElement.height;
@@ -144,7 +146,7 @@ Game.prototype.startLoop = function () {
     var y = self.lanes[random];
     var speed = (700 / y); // @todo make setSpeed function
     if(Math.random() > 0.90){
-    self.cars.push(new Cars(self.canvasElement, y, speed));
+      self.cars.push(new Cars(self.canvasElement, y, speed));
     } 
 
     self.chicken.update();
@@ -159,11 +161,11 @@ Game.prototype.startLoop = function () {
  
     self.CheckIfCollides();
     
+    // -- erase and paint everything again
+
     ctx.clearRect(0, 0, self.width, self.height);
-    ctx.fillStyle = 'green';
-    ctx.fillRect(0, 0, self.width, 40);
-    ctx.fillRect(0, self.height-40, self.width, 50);
-    
+
+    self.background.draw();
     self.chicken.draw();
     self.cars.forEach(function(item){
       item.draw();
