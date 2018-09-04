@@ -6,7 +6,7 @@ function Game() {
   self.gameIsOver = false;
   self.gameIsWon = false;
   self.timeLeft = null;
-  //self.round = round;
+  self.score = 0;
   self.lanes = [75, 125, 175, 225, 275, 325, 375];
 
 }
@@ -21,8 +21,8 @@ Game.prototype.start = function () {
           <span class="label">Lives:</span>
           <span class="value"></span>
         </div>
-        <div class="round">
-          <span class="label">Round:</span>
+        <div class="score">
+          <span class="label">Score:</span>
           <span class="value"></span>
         </div>
         <div class="timer">
@@ -40,7 +40,7 @@ Game.prototype.start = function () {
   self.canvasElement = self.gameMain.querySelector('canvas');
 
   self.livesElement = self.gameMain.querySelector('.lives .value');
-  self.roundElement = self.gameMain.querySelector('.round .value');
+  self.scoreElement = self.gameMain.querySelector('.score .value');
   self.timeLeftElement = self.gameMain.querySelector('.timer .value');
 
   document.body.appendChild(self.gameMain);
@@ -55,6 +55,8 @@ Game.prototype.start = function () {
 
   self.chicken = new Chicken(self.canvasElement, 5);
   self.livesElement.innerText = self.chicken.lives;
+  self.scoreElement.innerText = self.score;
+
   self.startTimer();
 
   self.handleKeyDown = function(event){
@@ -104,7 +106,7 @@ Game.prototype.start = function () {
 Game.prototype.startTimer = function () {
   var self = this;
 
-  self.timeLeft = 60;
+  self.timeLeft = 10;
   self.timeLeftElement.innerText = self.timeLeft;
   self.intervalId = window.setInterval(function () {
     self.timeLeft--;
@@ -136,7 +138,7 @@ Game.prototype.startLoop = function () {
 
     var random = Math.floor(Math.random() * self.lanes.length);
     var y = self.lanes[random];
-    var speed = (900 / y); // @todo make setSpeed function
+    var speed = (100 / y); // @todo make setSpeed function
     if(Math.random() > 0.90){
     self.cars.push(new Cars(self.canvasElement, y, speed));
     } 
@@ -165,12 +167,14 @@ Game.prototype.startLoop = function () {
     });
 
     if (self.chicken.isCrossed()) {
-      self.winGame();
+      self.addPoint();
     }
 
     if (!self.isGameEnded()) {
       window.requestAnimationFrame(loop);
     }
+
+
   }
 
   window.requestAnimationFrame(loop);
@@ -184,6 +188,7 @@ Game.prototype.CheckIfCollides = function () {
       self.chicken.collided();
       self.chicken.removeChicken();
       self.livesElement.innerText = self.chicken.lives;
+      self.scoreElement.innerText = self.score;
       if(self.chicken.lives === 0) {
         self.gameOver();
       }
@@ -228,5 +233,17 @@ Game.prototype.onWon = function (callback) {
 
   self.onGameWonCallback = callback;
 };
+
+
+Game.prototype.addPoint = function(){
+  var self = this;
+  self.score = self.score + 100;
+  self.scoreElement.innerText = self.score;
+  self.chicken.removeChicken();
+
+};
+
+
+
 
 
