@@ -1,3 +1,4 @@
+
 /* ---- reset ---- */
 
 html {
@@ -21,19 +22,19 @@ body {
   line-height: 147%;
 }
 
-.splash h1 {
-  font-family: "Erica One";
-  color: yellow;
-  font-weight: 100;
-  font-size: 50px;
-  letter-spacing: 3px;
-  text-align: center;
-  text-shadow: -3px 0 black, 0 3px black, 3px 0 black, 0 -3px black;
+button {
+  font-family: "Amatic SC", Helvetica, Arial, sans-serif;
+  font-weight: 900;
+  font-size: 40px;
+
 }
 
-h2 {}
-
-h3 {}
+.instructions {
+  font-weight: 900;
+  font-size: 25px;
+  text-align: center;
+  line-height: 0%;
+}
 
 p {
   margin: 0;
@@ -47,9 +48,54 @@ html, body {
   height: 100%;
 }
 
+.splash body{
+  background-color: red;
+}
+
 .container {
   margin: 0 20px;
 }
+
+.splash .wrap {
+  padding: 2em 0.2em;
+  margin: 0 auto;
+}
+
+.splash button {
+  background-color: orange;
+  border: 3px solid black;
+  border-radius: 40px;
+  padding: 25px;
+
+}
+
+.splash h1{
+  margin: 0;
+  text-align: center;
+  font-weight: normal;
+  color: rgb(255, 230, 0);
+  text-transform: uppercase;
+  font-size: 8em;
+  white-space: nowrap;
+  font-size: 12vw;
+  z-index: 1000;
+  font-family: 'Bangers', cursive;
+  text-shadow: 5px 5px 0 rgba(7, 6, 0, 0.966);
+}
+
+@media screen and (max-width: 50em) {
+  h1 {
+    font-size: 18vw;
+   }
+}
+
+.chicken-img{
+  width: 500px;
+  background-image: url("https://oreinsofblog.files.wordpress.com/2014/03/stock-vector-scared-cartoon-chicken-vector-clip-art-illustration-with-simple-gradients-all-in-a-single-layer-119505895.jpg");
+  background-repeat:no-repeat;
+  
+}
+
 
 @media (min-width: 768px) {
   .container {
@@ -57,6 +103,7 @@ html, body {
     margin: 0 auto;
   }
 }
+
 
 
 
