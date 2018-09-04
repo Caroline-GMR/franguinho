@@ -21,8 +21,19 @@ function main() {
 
     splashMain = buildDom(`
       <main class="splash">
+        <div class="wrap">
         <h1>Franguinho</h1>
+        </div>
+        <div class="instructions">
+        <h4>You are a chicken and need to cross the road.</h4>
+        <h4>Use the keyboard arrows to move up, down, left and right.</h4>
+        <h4>You have 60 seconds to cross the highway as many as you can.</h4>
+        <h4>You have 5 lives and if you are hit by a car, you lose 1 live.</h4>
+        <h4>Good luck!</h4>
         <button>Start Game</button>
+        </div>
+        <div class="chicken-img"></div>
+
       </main>
     `);
     
