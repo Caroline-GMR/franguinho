@@ -19,7 +19,9 @@ Game.prototype.start = function () {
       <header>
         <div class="lives">
           <span class="label">Lives:</span>
-          <span class="value"></span>
+          <span class="value">
+            <img src="http://mzayat.com//2018/drawn-chicken-face/drawn-chicken-face-18.jpg">
+          </span>
         </div>
         <div class="score">
           <span class="label">Score:</span>
@@ -159,7 +161,7 @@ Game.prototype.startLoop = function () {
       return item.isInScreen();
     })
  
-    self.CheckIfCollides();
+    self.checkIfCollides();
     
     // -- erase and paint everything again
 
@@ -186,7 +188,7 @@ Game.prototype.startLoop = function () {
   window.requestAnimationFrame(loop);
 };
 
-Game.prototype.CheckIfCollides = function () {
+Game.prototype.checkIfCollides = function () {
   var self = this;
   
   self.cars.forEach(function(item){

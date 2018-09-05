@@ -29,11 +29,4 @@ Cars.prototype.isInScreen = function() {
   var self = this;
   return self.x + self.size / 2 > 0;
 }
-/* 
-Cars.prototype.removeCar = function() {
-  var self = this;
 
-  console.log('removeCar was called');
-  ctx.clearRect(0, 0, self.width, self.height);
-}
- */

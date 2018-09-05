@@ -138,6 +138,7 @@ button {
   flex: 1;
 }
 
+
 .game .round {
   flex: 1;
 }
@@ -157,9 +158,7 @@ button {
 .game .canvas {
   flex: 1;
 }
-/* 
+
 .gameover {
-  flex: 1;
-  align-self: center;
-  justify-content: center;
-} */
+  text-align: center;
+} 

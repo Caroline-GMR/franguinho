@@ -25,14 +25,16 @@ function main() {
         <h1>Franguinho</h1>
         </div>
         <div class="instructions">
-        <h4>You are a chicken and need to cross the road.</h4>
+        <h4>You are a chicken and you need to cross the road.</h4>
         <h4>Use the keyboard arrows to move up, down, left and right.</h4>
         <h4>You have 60 seconds to cross the highway as many as you can.</h4>
-        <h4>You have 5 lives and if you are hit by a car, you lose 1 live.</h4>
+        <h4>You have 5 lives and if you are hit by a car, you lose 1 live and some score.</h4>
         <h4>Good luck!</h4>
         <button>Start Game</button>
         </div>
-        <div class="chicken-img"></div>
+        <div class="chicken-img">
+        <img src="https://oreinsofblog.files.wordpress.com/2014/03/stock-vector-scared-cartoon-chicken-vector-clip-art-illustration-with-simple-gradients-all-in-a-single-layer-119505895.jpg"></img>
+        </div>
 
       </main>
     `);
@@ -59,10 +61,10 @@ function main() {
     game = new Game();
     game.start();
     game.onOver(function () {
-      gameOver(game.round);
+      gameOver(game.score);
     });
     game.onWon(function(){
-      gameWon();
+      gameWon(game.score);
     });
   }
 
@@ -73,26 +75,29 @@ function main() {
   // -- game over 
 
 
-  function gameOver(round) {
+  function gameOver(score) {
     destroyGame();
-    buildGameOver(round);
+    buildGameOver(score);
   }
 
-  function buildGameOver(round) {
+  function buildGameOver(score) {
 
     gameOverMain = buildDom(`
-      <main>
+      <main class="gameover">
         <h1>Game over</h1>
         <p>Your score: <span></span></p>
         <button>Restart Game</button>
-      </main>
-    `);
-
+        <div class="chicken-img">
+        </div>
+        </main>
+        `);
+        
+        /* <img src="https://i.imgur.com/haJ8bbI.jpg"> */
     var button = gameOverMain.querySelector('button');
     button.addEventListener('click', startGame);    
     
     var span = gameOverMain.querySelector('span');
-    span.innerText = round;
+    span.innerText = score;
 
     document.body.appendChild(gameOverMain);
   }
@@ -105,12 +110,12 @@ function main() {
 
   // -- game won
 
-  function gameWon(){
+  function gameWon(score){
     destroyGame();
-    buildGameWon();
+    buildGameWon(score);
   }
 
-  function buildGameWon(){
+  function buildGameWon(score){
     gameWonMain = buildDom(`
       <main class="won">
         <h1>You win!</h1>
@@ -125,7 +130,7 @@ function main() {
     button.addEventListener('click', startGame);
 
     var span = gameWonMain.querySelector('span');
-    span.innerText = self.game.round;
+    span.innerText = score;
   }
 
   function destroyGameWon(){
