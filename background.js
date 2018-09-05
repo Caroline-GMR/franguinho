@@ -21,20 +21,6 @@ Background.prototype.draw = function () {
   self.ctx.fillStyle = 'grey';
   self.ctx.fillRect(0, 40, self.width, self.height-80);
 
- /*  self.ctx.strokeStyle = 'white';
-  self.ctx.beginPath();
-  self.ctx.setLineDash([]);
-  self.ctx.moveTo(0, 50);
-  self.ctx.lineTo(1200, 50);
-  self.ctx.stroke();
-
-  self.ctx.strokeStyle = 'white';
-  self.ctx.beginPath();
-  self.ctx.setLineDash([]);
-  self.ctx.moveTo(0, 400);
-  self.ctx.lineTo(1200, 400);
-  self.ctx.stroke(); */
-
   for (var i = 1; i <= self.linesToDraw; i++){
     var lineDash = [];
     if (i > 1 && i < self.linesToDraw) {

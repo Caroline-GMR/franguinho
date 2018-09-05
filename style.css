@@ -159,6 +159,10 @@ button {
   flex: 1;
 }
 
+.game .hidden{
+  display: none;
+}
+
 .gameover {
   text-align: center;
 } 

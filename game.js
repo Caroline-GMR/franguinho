@@ -35,6 +35,10 @@ Game.prototype.start = function () {
       <div class="canvas">
         <canvas></canvas>
       </div>
+      <div>
+      <img id="chicken" src="https://i.imgur.com/pxopoGn.png" class="hidden">
+      <img id="car" src="https://i.imgur.com/F1RLXti.png" class="hidden">
+      </div>
     </main>
   `);
 
@@ -146,7 +150,7 @@ Game.prototype.startLoop = function () {
 
     var random = Math.floor(Math.random() * self.lanes.length);
     var y = self.lanes[random];
-    var speed = (700 / y); // @todo make setSpeed function
+    var speed = (800 / y); // @todo make setSpeed function
     if(Math.random() > 0.90){
       self.cars.push(new Cars(self.canvasElement, y, speed));
     } 

@@ -44,8 +44,10 @@ Chicken.prototype.update = function(){
 Chicken.prototype.draw = function() {
   var self = this;
 
-  self.ctx.fillStyle = 'yellow';
-  self.ctx.fillRect(self.x - self.size / 2, self.y - self.size / 2, self.size, self.size);
+  //self.ctx.fillStyle = 'yellow';
+ //self.ctx.fillRect(self.x - self.size / 2, self.y - self.size / 2, self.size, self.size);
+  var image = document.getElementById('chicken');
+  self.ctx.drawImage(image, self.x - self.size / 2, self.y - self.size / 2, self.size, self.size);
 
 }
 
