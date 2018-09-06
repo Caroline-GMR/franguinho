@@ -5,9 +5,9 @@ function Chicken(canvas, lives){
 
   self.canvas = canvas;
   self.lives = lives;
-  self.size = 20;
+  self.size = 40;
   self.x = canvas.width / 2;
-  self.y = canvas.height - self.size;
+  self.y = canvas.height - self.size / 2;
   self.direction = 0;
   self.speed = 4;
   self.ctx = self.canvas.getContext('2d');
@@ -44,11 +44,11 @@ Chicken.prototype.update = function(){
 Chicken.prototype.draw = function() {
   var self = this;
 
-  //self.ctx.fillStyle = 'yellow';
- //self.ctx.fillRect(self.x - self.size / 2, self.y - self.size / 2, self.size, self.size);
-  var image = document.getElementById('chicken');
-  self.ctx.drawImage(image, self.x - self.size / 2, self.y - self.size / 2, self.size, self.size);
-
+  self.ctx.fillStyle = 'yellow';
+  self.ctx.fillRect(self.x - self.size / 2, self.y - self.size / 2, self.size, self.size);
+  /* var image = document.getElementById('chicken');
+  self.ctx.drawImage(image, self.x - self.size / 2, self.y - self.size / 3, self.size, self.size);
+ */
 }
 
 Chicken.prototype.collidesWithCar = function (car) {
@@ -74,7 +74,7 @@ Chicken.prototype.collided = function () {
 
 Chicken.prototype.isCrossed = function () {
   var self = this;
-  if(self.y === (25)){
+  if(self.y === (20)){
     return true;
   }
   return false;

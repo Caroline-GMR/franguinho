@@ -10,14 +10,18 @@ function buildDom(html) {
 function main() {
 
   var splashMain;
+  var musicSplash;
   var gameOverMain;
   var gameWonMain;
-
+  
   var game;
 
   // -- splash
 
   function buildSplash() {
+
+    musicSplash = new Audio("../franguinho/mp3/chickensong1.mp3");
+    musicSplash.play(); 
 
     splashMain = buildDom(`
       <main class="splash">
@@ -33,7 +37,7 @@ function main() {
         <button>Start Game</button>
         </div>
         <div class="chicken-img">
-        <img src="https://oreinsofblog.files.wordpress.com/2014/03/stock-vector-scared-cartoon-chicken-vector-clip-art-illustration-with-simple-gradients-all-in-a-single-layer-119505895.jpg"></img>
+        <img src="https://i.imgur.com/cupcAuy.png"></img>
         </div>
 
       </main>
@@ -48,6 +52,7 @@ function main() {
 
   function destroySplash() {
     splashMain.remove();
+    musicSplash.pause();
   }
 
   
@@ -81,7 +86,7 @@ function main() {
   }
 
   function buildGameOver(score) {
-
+    //musicSplash.play();
     gameOverMain = buildDom(`
       <main class="gameover">
         <h1>Game over</h1>
@@ -105,6 +110,7 @@ function main() {
   function destroyGameOver() {
     if (gameOverMain) {
       gameOverMain.remove();
+      musicSplash.pause();
     }
   }
 

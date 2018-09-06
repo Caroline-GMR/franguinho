@@ -4,7 +4,7 @@ function Cars(canvas, y, speed) {
   var self = this;
 
   self.canvas = canvas;
-  self.size = 20;
+  self.size = 40;
   self.x = canvas.width + self.size;
   self.y = y;
   self.speed = speed;
@@ -20,10 +20,10 @@ Cars.prototype.update = function(move){
 
 Cars.prototype.draw = function(){
   var self = this;
-  var image = document.getElementById('car');
-  self.ctx.drawImage(image, self.x - self.size / 2, self.y - self.size / 2, self.size, self.size);
-  //self.ctx.fillStyle = 'red';
-  //self.ctx.fillRect(self.x - self.size / 2, self.y - self.size / 2, self.size, self.size);
+  //var image = document.getElementById('car');
+  //self.ctx.drawImage(image, self.x - self.size / 2, self.y - self.size / 2, self.size, self.size); */
+  self.ctx.fillStyle = 'red';
+  self.ctx.fillRect(self.x - self.size / 2, self.y - self.size / 2, self.size, self.size);
 }
 
 Cars.prototype.isInScreen = function() {

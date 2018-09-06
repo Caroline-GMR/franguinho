@@ -7,7 +7,7 @@ function Game() {
   self.gameIsWon = false;
   self.timeLeft = null;
   self.score = 0;
-  self.lanes = [75, 125, 175, 225, 275, 325, 375];
+  self.lanes = [70, 160, 250, 340, 430];
 
 }
 
@@ -36,8 +36,8 @@ Game.prototype.start = function () {
         <canvas></canvas>
       </div>
       <div>
-      <img id="chicken" src="https://i.imgur.com/pxopoGn.png" class="hidden">
-      <img id="car" src="https://i.imgur.com/F1RLXti.png" class="hidden">
+      <img id="chicken" src="https://i.imgur.com/HBucX75.png" class="hidden">
+      <img id="car" src="https://i.imgur.com/ED2fQlZ.png" class="hidden">
       </div>
     </main>
   `);
@@ -54,13 +54,13 @@ Game.prototype.start = function () {
   //self.width = self.canvasParentElement.offsetWidth;
   //self.height = self.canvasParentElement.offsetHeight;
   self.width = 1200;
-  self.height = 450;
+  self.height = 500;
 
 
   self.canvasElement.setAttribute('width', self.width);
   self.canvasElement.setAttribute('height', self.height);
 
-  self.background = new Background(self.canvasElement, self.lanes.length, self.width, self.height);
+  self.background = new Background(self.canvasElement, self.lanes, self.width, self.height);
 
   self.chicken = new Chicken(self.canvasElement, 5);
   self.livesElement.innerText = self.chicken.lives;
