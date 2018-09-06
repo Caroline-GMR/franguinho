@@ -7,7 +7,7 @@ function Game() {
   self.gameIsWon = false;
   self.timeLeft = null;
   self.score = 0;
-  self.lanes = [70, 160, 250, 340, 430];
+  self.lanes = [80, 190, 300, 410];
 
 }
 
@@ -36,12 +36,14 @@ Game.prototype.start = function () {
         <canvas></canvas>
       </div>
       <div>
-      <img id="chicken" src="https://i.imgur.com/HBucX75.png" class="hidden">
-      <img id="car" src="https://i.imgur.com/ED2fQlZ.png" class="hidden">
+      <img id="chicken" src="https://i.imgur.com/MwPH1p3.png" class="hidden">
+      <img id="car" src="https://i.imgur.com/IXoLdvq.png" class="hidden">
+      
+  
       </div>
     </main>
   `);
-
+//    https://i.imgur.com/ED2fQlZ.png
   self.canvasParentElement = self.gameMain.querySelector('.canvas');
   self.canvasElement = self.gameMain.querySelector('canvas');
 
@@ -60,7 +62,10 @@ Game.prototype.start = function () {
   self.canvasElement.setAttribute('width', self.width);
   self.canvasElement.setAttribute('height', self.height);
 
-  self.background = new Background(self.canvasElement, self.lanes, self.width, self.height);
+  self.background = new Background(self.canvasElement, self.lanes.length, self.width, self.height);
+  self.car = [];
+
+  self.startLoop();
 
   self.chicken = new Chicken(self.canvasElement, 5);
   self.livesElement.innerText = self.chicken.lives;
@@ -105,10 +110,6 @@ Game.prototype.start = function () {
 
   document.body.addEventListener('keyup', self.handleKeyUp);
 
-  self.cars = [];
-
-  self.startLoop();
-
 };
 
 Game.prototype.startTimer = function () {
@@ -150,18 +151,18 @@ Game.prototype.startLoop = function () {
 
     var random = Math.floor(Math.random() * self.lanes.length);
     var y = self.lanes[random];
-    var speed = (800 / y); // @todo make setSpeed function
-    if(Math.random() > 0.90){
-      self.cars.push(new Cars(self.canvasElement, y, speed));
+    var speed = (600 / y); // @todo make setSpeed function
+    if(Math.random() > 0.99){
+      self.car.push(new Car(self.canvasElement, y, speed));
     } 
 
     self.chicken.update();
 
-    self.cars.forEach(function(item){
+    self.car.forEach(function(item){
       item.update();
     });
   
-    self.cars = self.cars.filter(function(item){
+    self.car = self.car.filter(function(item){
       return item.isInScreen();
     })
  
@@ -173,7 +174,7 @@ Game.prototype.startLoop = function () {
 
     self.background.draw();
     self.chicken.draw();
-    self.cars.forEach(function(item){
+    self.car.forEach(function(item){
       item.draw();
     });
 
@@ -195,7 +196,7 @@ Game.prototype.startLoop = function () {
 Game.prototype.checkIfCollides = function () {
   var self = this;
   
-  self.cars.forEach(function(item){
+  self.car.forEach(function(item){
     if(self.chicken.collidesWithCar(item)) {
       self.chicken.collided();
       self.chicken.removeChicken();

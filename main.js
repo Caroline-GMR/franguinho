@@ -34,7 +34,9 @@ function main() {
         <h4>You have 60 seconds to cross the highway as many as you can.</h4>
         <h4>You have 5 lives and if you are hit by a car, you lose 1 live and some score.</h4>
         <h4>Good luck!</h4>
-        <button>Start Game</button>
+        <button class="button">Start Game</button>
+        <div>
+        <img class="chicken-img1" src="https://i.imgur.com/CakSl7k.png">
         </div>
         <div class="chicken-img">
         <img src="https://i.imgur.com/cupcAuy.png"></img>
@@ -52,7 +54,7 @@ function main() {
 
   function destroySplash() {
     splashMain.remove();
-    musicSplash.pause();
+    //musicSplash.pause();
   }
 
   
@@ -74,30 +76,32 @@ function main() {
   }
 
   function destroyGame() {
+    musicSplash.pause();
     game.destroy();
   }
 
   // -- game over 
 
+  var musicGameOver = new Audio("../franguinho/mp3/lose.mp3");
 
   function gameOver(score) {
     destroyGame();
     buildGameOver(score);
+    musicGameOver.play();
   }
 
   function buildGameOver(score) {
-    //musicSplash.play();
+   // musicSplash.play();
     gameOverMain = buildDom(`
       <main class="gameover">
         <h1>Game over</h1>
+        <img class="chicken-gameover" src="https://i.imgur.com/z2BwXuL.png">
         <p>Your score: <span></span></p>
-        <button>Restart Game</button>
-        <div class="chicken-img">
-        </div>
+        <button class="button restart">Restart Game</button>
         </main>
         `);
         
-        /* <img src="https://i.imgur.com/haJ8bbI.jpg"> */
+        /*  */
     var button = gameOverMain.querySelector('button');
     button.addEventListener('click', startGame);    
     
@@ -110,7 +114,7 @@ function main() {
   function destroyGameOver() {
     if (gameOverMain) {
       gameOverMain.remove();
-      musicSplash.pause();
+      //musicSplash.pause();
     }
   }
 
@@ -125,8 +129,9 @@ function main() {
     gameWonMain = buildDom(`
       <main class="won">
         <h1>You win!</h1>
+        <img class="chicken-gamewon" src="https://i.imgur.com/C05LoSt.png">
         <p>Your score: <span></span></p>
-        <button>Restart Game</button>
+        <button class="button">Restart Game</button>
       </main>
     `);
     

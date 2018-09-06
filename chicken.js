@@ -5,7 +5,7 @@ function Chicken(canvas, lives){
 
   self.canvas = canvas;
   self.lives = lives;
-  self.size = 40;
+  self.size = 50;
   self.x = canvas.width / 2;
   self.y = canvas.height - self.size / 2;
   self.direction = 0;
@@ -44,20 +44,20 @@ Chicken.prototype.update = function(){
 Chicken.prototype.draw = function() {
   var self = this;
 
-  self.ctx.fillStyle = 'yellow';
-  self.ctx.fillRect(self.x - self.size / 2, self.y - self.size / 2, self.size, self.size);
-  /* var image = document.getElementById('chicken');
-  self.ctx.drawImage(image, self.x - self.size / 2, self.y - self.size / 3, self.size, self.size);
- */
+  //self.ctx.fillStyle = 'green';
+  //self.ctx.fillRect(self.x - self.size / 2, self.y - self.size / 2, self.size, self.size);
+  var image = document.getElementById('chicken');
+  self.ctx.drawImage(image, self.x - self.size / 2, self.y - self.size / 2, self.size, self.size);
+
 }
 
 Chicken.prototype.collidesWithCar = function (car) {
   var self = this;
 
-  const collidesRight = self.x + self.size / 2 > car.x - car.size / 2;
-  const collidesLeft = self.x - self.size / 2 < car.x + car.size / 2;
-  const collidesTop = self.y - self.size / 2 < car.y + car.size / 2;
-  const collidesBottom = self.y + self.size / 2 > car.y - car.size / 2;
+  const collidesRight = self.x + self.size / 3 > car.x - car.size / 3;
+  const collidesLeft = self.x - self.size / 3 < car.x + car.size / 3;
+  const collidesTop = self.y - self.size / 3 < car.y + car.size / 2;
+  const collidesBottom = self.y + self.size / 3 > car.y - car.size / 2;
 
   if (collidesLeft && collidesRight && collidesTop && collidesBottom) {
     return true;

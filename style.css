@@ -62,13 +62,24 @@ html, body {
   margin: 0 auto;
 }
 
-button {
+.button {
   background-color: orange;
   border: 3px solid black;
   border-radius: 40px;
   padding: 25px;
+  cursor: pointer;
+  outline: none;
 
 }
+
+.button:hover {background-color: orangered}
+
+.button:active {
+  background-color: #eeff00;
+  box-shadow: 0 5px #666;
+  transform: translateY(4px);
+}
+
 
 .splash h1{
   margin-top: 20px;
@@ -90,20 +101,32 @@ button {
    }
 } */
 
-.chicken-img{
+
+.chicken-img1{
+  width: 500px;
   position: relative;
-  float: right;
+  float: left;
   margin-top: -145px;
 }
 
-
-.gameover .chicken-img{
-  margin: 20px;
-  position: absolute;
+.chicken-img{
+  position: relative;
   float: right;
-  width: 200px;
-  height: 120px;
+  margin-top: -85px;
 }
+
+
+.chicken-gameover{
+  width: 150px;
+
+}
+
+
+.chicken-gamewon{
+  width: 160px;
+
+}
+
 
 
 
@@ -165,4 +188,12 @@ button {
 
 .gameover {
   text-align: center;
+  float: center;
+
+} 
+
+.won {
+  text-align: center;
+  float: center;
+
 } 

@@ -1,10 +1,10 @@
 'use strict';
 
-function Cars(canvas, y, speed) {
+function Car(canvas, y, speed) {
   var self = this;
 
   self.canvas = canvas;
-  self.size = 40;
+  self.size = 50;
   self.x = canvas.width + self.size;
   self.y = y;
   self.speed = speed;
@@ -12,21 +12,23 @@ function Cars(canvas, y, speed) {
 
 }
 
-Cars.prototype.update = function(move){
+Car.prototype.update = function(){
   var self = this;
 
   self.x = self.x - self.speed;
 }
 
-Cars.prototype.draw = function(){
+Car.prototype.draw = function(){
   var self = this;
-  //var image = document.getElementById('car');
-  //self.ctx.drawImage(image, self.x - self.size / 2, self.y - self.size / 2, self.size, self.size); */
-  self.ctx.fillStyle = 'red';
-  self.ctx.fillRect(self.x - self.size / 2, self.y - self.size / 2, self.size, self.size);
+  
+  //self.ctx.fillStyle = 'black';
+  //self.ctx.fillRect(self.x - self.size / 2, self.y - self.size / 2, self.size, self.size);
+  var image = document.getElementById('car');
+  self.ctx.drawImage(image, self.x - self.size / 2, self.y - self.size / 2, self.size, self.size);
+
 }
 
-Cars.prototype.isInScreen = function() {
+Car.prototype.isInScreen = function() {
   var self = this;
   return self.x + self.size / 2 > 0;
 }
