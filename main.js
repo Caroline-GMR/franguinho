@@ -36,8 +36,8 @@ function main() {
         <h4>You have 5 lives and if you are hit by a car, you lose 1 live and some score.</h4>
         <h4>Good luck!</h4>
         <button class="button">Start Game</button>
-        <div>
-        <img class="chicken-img1" src="https://i.imgur.com/CakSl7k.png">
+        <div class="chicken-img1">
+        <img src="https://i.imgur.com/CakSl7k.png">
         </div>
         <div class="chicken-img">
         <img src="https://i.imgur.com/cupcAuy.png"></img>
