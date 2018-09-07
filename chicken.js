@@ -9,7 +9,7 @@ function Chicken(canvas, lives){
   self.x = canvas.width / 2;
   self.y = canvas.height - self.size / 2;
   self.direction = 0;
-  self.speed = 4;
+  self.speed = 3;
   self.ctx = self.canvas.getContext('2d');
   self.keyState = [false, false, false, false];
 };
@@ -66,6 +66,7 @@ Chicken.prototype.collidesWithCar = function (car) {
   return false;
 }
 
+
 Chicken.prototype.collided = function () {
   var self = this;
   self.lives--;
@@ -83,6 +84,6 @@ Chicken.prototype.isCrossed = function () {
 Chicken.prototype.removeChicken = function () {
   var self = this;
 
-  self.y = self.canvas.height - self.size;
+  self.y = self.canvas.height - self.size / 2;
 
 }

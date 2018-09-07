@@ -11,6 +11,7 @@ function Game() {
 
 }
 
+
 Game.prototype.start = function () {
   var self = this;
 
@@ -20,7 +21,6 @@ Game.prototype.start = function () {
         <div class="lives">
           <span class="label">Lives:</span>
           <span class="value">
-            <img src="http://mzayat.com//2018/drawn-chicken-face/drawn-chicken-face-18.jpg">
           </span>
         </div>
         <div class="score">
@@ -89,10 +89,10 @@ Game.prototype.start = function () {
       self.chicken.keyState[1] = true;
       self.chicken.setDirection(1);
     }
-}
-
+  }
+  
   document.body.addEventListener('keydown', self.handleKeyDown);
-
+  
   self.handleKeyUp = function(event){
     if (event.key === 'ArrowUp'){
       self.chicken.keyState[0] = false;
@@ -106,21 +106,26 @@ Game.prototype.start = function () {
     if(event.key === 'ArrowLeft'){
       self.chicken.keyState[3] = false;
     }
-}
-
+  }
+  
   document.body.addEventListener('keyup', self.handleKeyUp);
-
+  
 };
 
 Game.prototype.startTimer = function () {
   var self = this;
-
-  self.timeLeft = 60;
+  
+  self.timeLeft = 30;
   self.timeLeftElement.innerText = self.timeLeft;
   self.intervalId = window.setInterval(function () {
     self.timeLeft--;
     self.timeLeftElement.innerText = self.timeLeft;
-
+    if(self.timeLeft % 7 === 0 && self.timeLeft > 5){
+      soundCar.play();
+    }
+    if (self.timeLeft === 5){
+      timerSound.play();
+    }
     if (self.timeLeft === 0) {
       clearInterval(self.intervalId);
       if (self.chicken.lives === 5 && self.score > 0){
@@ -132,28 +137,44 @@ Game.prototype.startTimer = function () {
   }, 1000);
 };
 
+var pointSound;
+pointSound = new Audio("../franguinho/mp3/point.mp3");
+
+
+var collidedSound;
+collidedSound = new Audio("../franguinho/mp3/ouch1.mp3");
+//collidedSound.volume = 0.9;
+
+var soundCar;
+soundCar = new Audio("./mp3/horn.mp3");
+soundCar.volume = 0.2;
+
+var timerSound;
+timerSound = new Audio("../franguinho/mp3/timer.mp3");
+
 Game.prototype.timeout = function () {
   var self = this;
   if (!self.isGameEnded()){
+    
     self.gameOver();
   }
 };
 
 Game.prototype.startLoop = function () {
   var self = this;
-
+  
   var ctx = self.canvasElement.getContext('2d');
-
+  
   function loop(){
-
+    
     /* var height = self.canvasElement.height;
     var width = self.canvasElement.width; */
 
     var random = Math.floor(Math.random() * self.lanes.length);
     var y = self.lanes[random];
-    var speed = (600 / y); // @todo make setSpeed function
-    if(Math.random() > 0.99){
-      self.car.push(new Car(self.canvasElement, y, speed));
+    var speed = (900 / y); // @todo make setSpeed function
+    if(Math.random() > 0.98){
+        self.car.push(new Car(self.canvasElement, y, speed));
     } 
 
     self.chicken.update();
@@ -179,6 +200,7 @@ Game.prototype.startLoop = function () {
     });
 
     if (self.chicken.isCrossed()) {
+      pointSound.play();
       self.addPoint();
     }
 
@@ -247,7 +269,6 @@ Game.prototype.onWon = function (callback) {
   self.onGameWonCallback = callback;
 };
 
-
 Game.prototype.addPoint = function(){
   var self = this;
   self.score = self.score + 100;
@@ -255,6 +276,8 @@ Game.prototype.addPoint = function(){
   self.chicken.removeChicken();
 
 };
+
+
 
 
 

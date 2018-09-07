@@ -22,6 +22,7 @@ function main() {
 
     musicSplash = new Audio("../franguinho/mp3/chickensong1.mp3");
     musicSplash.play(); 
+    musicSplash.volume = 0.1;
 
     splashMain = buildDom(`
       <main class="splash">
@@ -54,21 +55,27 @@ function main() {
 
   function destroySplash() {
     splashMain.remove();
-    //musicSplash.pause();
+    musicSplash.pause();
   }
 
   
   // -- game
-
+  var musicGame;
   function startGame() {
     destroySplash();
     destroyGameOver();
     destroyGameWon();
+    musicGame = new Audio("../franguinho/mp3/game.mp3");
+    musicGame.play();
 
     game = new Game();
     game.start();
     game.onOver(function () {
       gameOver(game.score);
+      musicGame.pause();
+      timerSound.pause();
+
+
     });
     game.onWon(function(){
       gameWon(game.score);
@@ -76,7 +83,8 @@ function main() {
   }
 
   function destroyGame() {
-    musicSplash.pause();
+    musicGame.pause();
+    timerSound.pause();
     game.destroy();
   }
 
@@ -91,7 +99,6 @@ function main() {
   }
 
   function buildGameOver(score) {
-   // musicSplash.play();
     gameOverMain = buildDom(`
       <main class="gameover">
         <h1>Game over</h1>
@@ -120,9 +127,14 @@ function main() {
 
   // -- game won
 
+  var winSound;
+  winSound = new Audio("../franguinho/mp3/win.mp3");
   function gameWon(score){
     destroyGame();
     buildGameWon(score);
+    winSound.play();
+    musicGame.pause();
+    timerSound.pause();
   }
 
   function buildGameWon(score){
@@ -147,6 +159,7 @@ function main() {
   function destroyGameWon(){
     if (gameWonMain) {
     gameWonMain.remove();
+    winSound.pause();
     }
   }
 
