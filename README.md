@@ -5,12 +5,11 @@ Franguinho
 
 
 ## Description
-The player control a chicken who can be made to run across a lane highway filled with traffic in an effort to 'get to the other side'. 
-There is just one lane, with cars of different sizes and travelling at different speeds.
+The player control a chicken who can be made to run across a lane highway filled with traffic, with cars travelling at different speeds, in an effort to 'get to the other side'. 
 - START: 
-The game starts with three lives and a countdown that starts with sixty seconds.
-Every time the chicken gets across a point is earned. 
-If hit by a car, a point and a live are lost and the chicken is pushed back to the bottom of the screen.
+The game starts with five lives and a countdown that starts with sixty seconds.
+Every time the chicken gets across some points are earned. 
+If hit by a car, a live is lost and the chicken is pushed back to the bottom of the screen.
 - GAME OVER: 
 When the countdown finish or there are no longer lifes, the game is over.
 - CONTROL: 
@@ -66,7 +65,7 @@ Classes and methods definition.
   - startLoop()- called by startGame(), creates a cars array, updates the position of the chicken and the car;
   - ifCollided() - checks if the chicken and the car collided, if yes, 1 live is lost;
   - triggerTimeOut() - if the countdown finishes, calls gameOver();
-  - addAPoint() - adds 1 point to the Score if the chicken crosses the road.
+  - addAPoint() - adds 100 point to the Score if the chicken crosses the road.
 
 - CARS.JS
 
@@ -132,12 +131,12 @@ Task definition in order of priority
 ### Git
 URls for the project repo and deploy
 [Link Repo](https://github.com/Caroline-GMR/franguinho)
-[Link Deploy](http://github.com)
+[Link Deploy](https://caroline-gmr.github.io/franguinho/)
 
 
 ### Slides
 URls for the project presentation (slides)
-[Link Slides.com](http://slides.com)
+[Link Slides.com](https://docs.google.com/presentation/d/1jOY2LA9R1Gi95OuXFTCMzi3nCLeBuWuUaXtUCPO_lzc/edit?usp=sharing)
 
 
 ## Development
