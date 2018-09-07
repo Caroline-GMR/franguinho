@@ -21,7 +21,7 @@ function main() {
   function buildSplash() {
 
     musicSplash = new Audio("../franguinho/mp3/chickensong1.mp3");
-    musicSplash.autoplay(); 
+    musicSplash.play(); 
     musicSplash.volume = 0.1;
 
     splashMain = buildDom(`
