@@ -21,7 +21,7 @@ function main() {
   function buildSplash() {
 
     musicSplash = new Audio("../franguinho/mp3/chickensong1.mp3");
-    musicSplash.play(); 
+    musicSplash.autoplay(); 
     musicSplash.volume = 0.1;
 
     splashMain = buildDom(`
@@ -108,7 +108,6 @@ function main() {
         </main>
         `);
         
-        /*  */
     var button = gameOverMain.querySelector('button');
     button.addEventListener('click', startGame);    
     
@@ -121,7 +120,6 @@ function main() {
   function destroyGameOver() {
     if (gameOverMain) {
       gameOverMain.remove();
-      //musicSplash.pause();
     }
   }
 

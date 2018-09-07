@@ -115,7 +115,7 @@ Game.prototype.start = function () {
 Game.prototype.startTimer = function () {
   var self = this;
   
-  self.timeLeft = 30;
+  self.timeLeft = 60;
   self.timeLeftElement.innerText = self.timeLeft;
   self.intervalId = window.setInterval(function () {
     self.timeLeft--;
@@ -142,8 +142,7 @@ pointSound = new Audio("../franguinho/mp3/point.mp3");
 
 
 var collidedSound;
-collidedSound = new Audio("../franguinho/mp3/ouch1.mp3");
-//collidedSound.volume = 0.9;
+collidedSound = new Audio("../franguinho/mp3/ouch.mp3");
 
 var soundCar;
 soundCar = new Audio("./mp3/horn.mp3");
@@ -221,6 +220,7 @@ Game.prototype.checkIfCollides = function () {
   self.car.forEach(function(item){
     if(self.chicken.collidesWithCar(item)) {
       self.chicken.collided();
+      collidedSound.play();
       self.chicken.removeChicken();
       self.livesElement.innerText = self.chicken.lives;
       self.scoreElement.innerText = self.score;
@@ -241,6 +241,7 @@ Game.prototype.gameOver = function (callback) {
   var self = this;
 
   self.gameIsOver = true;
+  clearInterval(self.intervalId)
   self.onGameOverCallback();
 };
 
@@ -271,6 +272,8 @@ Game.prototype.onWon = function (callback) {
 
 Game.prototype.addPoint = function(){
   var self = this;
+  self.timeLeft = self.timeLeft + 10;
+  self.timeLeftElement.innerText = self.timeLeft;
   self.score = self.score + 100;
   self.scoreElement.innerText = self.score;
   self.chicken.removeChicken();

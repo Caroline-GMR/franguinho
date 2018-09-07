@@ -33,7 +33,6 @@ button {
   font-family: "Amatic SC", Helvetica, Arial, sans-serif;
   font-weight: 900;
   font-size: 40px;
-  position: absolute;
   z-index: 1;
 
 }
@@ -119,12 +118,18 @@ html, body {
    }
 } */
 
-
 .chicken-img1{
   width: 500px;
   position: absolute;
   bottom: 0;
 }
+
+@media(min-width: 768px){
+  .chicken-img1{
+    width: 100%;
+  }
+}
+
 
 .chicken-img{
   position: absolute;
