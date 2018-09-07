@@ -37,7 +37,7 @@ function main() {
         <h4>Good luck!</h4>
         <button class="button">Start Game</button>
         <div class="chicken-img1">
-        <img class="img-start" src="https://i.imgur.com/CakSl7k.png">
+
         </div>
         <div class="chicken-img">
         <img src="https://i.imgur.com/cupcAuy.png"></img>
