@@ -5,7 +5,7 @@ Franguinho
 
 
 ## Description
-The player control a chicken who can be made to run across a lane highway filled with traffic, with cars travelling at different speeds, in an effort to 'get to the other side'. 
+The player controls a chicken who can be made to run across a lane highway filled with traffic, with cars travelling at different speeds, in an effort to 'get to the other side'. 
 - START: 
 The game starts with five lives and a countdown that starts with sixty seconds.
 Every time the chicken gets across some points are earned. 
